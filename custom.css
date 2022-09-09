@@ -1,0 +1,14 @@
+.reveal .slides .cyan {
+    color: #00ffff;
+}
+.reveal .slides .pink {
+    color: #ff00ff;
+}
+.reveal .slides .gap {
+    gap: 1em;
+}
+.reveal .slides .drawing {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+}

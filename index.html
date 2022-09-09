@@ -8,16 +8,116 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/night.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="custom.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>RevealJS</h1>
+					<h3 class="cyan">Do your slides like a pro</h3>
+					<p class="pink">Maciej Małecki, Craftsmanship, 2022</p>
+				</section>
+				<section>
+					<img src="img/spy.png" alt="" class="r-stretch">
+				</section>
+				<section>
+					<p class="r-fit-text">REALLY?!</p>
+				</section>
+				<section>
+					<section>
+						<p class="r-fit-text">vertical</p>
+					</section>
+					<section>
+						<p class="r-fit-text">WYSYWIG</p>
+					</section>
+					<section>
+						<img src="img/mac.png" alt="" class="r-stretch">
+					</section>
+					<section>
+						<img src="img/jobs.jpg" alt="" class="r-stretch">
+					</section>
+				</section>
+				<section data-markdown data-separator-vertical="^--$">
+					<script type="text/template">
+						# now we go markdown
+						---
+						## here we can start
+
+						Here we place some content
+						---
+						# Vertical
+						--
+						second<!-- .element class="r-fit-text cyan"-->
+						--
+						third
+						---
+						### bulleted list
+
+						* first
+						* second<!-- .element class="cyan fragment"-->
+						* third<!-- .element class="pink fragment"-->
+						---
+						### Drawings
+
+						![Steve](img/jobs.jpg)
+
+						---
+						### Drawings
+
+						<div class="r-hstack gap">
+							<img src="img/jobs.jpg" alt="">
+							<div>
+								<ul>
+									<li>Steve</li>
+									<li>Jobs</li>
+								</ul>
+							</div>
+						</div>
+						---
+						![Arch](img/hello.excalidraw.png)
+
+						We are now architects!
+						---
+						### UML
+
+						![UML](img/uml.drawio.svg)<!-- .element class="drawing"-->
+						---
+						<!-- .slide: data-background="img/bomba.png" data-background-opacity="0.6"-->
+						tępe...
+						---
+						### Source code
+						```kotlin[|2-5|6-8|10|11|12]
+						private fun getProcessor(inputByteStream: InputByteStream): CTMProcessor {
+							val id = inputByteStream
+										.read(3)
+										.map { it.toChar() }
+										.joinToString(separator = "")
+							if (id != "CTM") {
+							  throw InvalidCTMFormatException("CTM id is missing")
+							}
+							return when (val version = inputByteStream.readByte().toInt()) {
+							  5 -> CTM5Processor(this@CharpadProcessor)
+							  6 -> CTM6Processor(this@CharpadProcessor)
+							  7 -> CTM7Processor(this@CharpadProcessor)
+							  8, 82 ->
+								  CTM8Processor(this@CharpadProcessor, version, ctm8PrototypeCompatibility)
+							  else -> throw InvalidCTMFormatException("Unsupported version: $version")
+							}
+						}
+						```
+						---
+						### Wzory
+
+						`$$
+						2\int_{-r}^r\sqrt{r^2 - x^2}dx = \pi r^2
+						$$`
+					</script>
+				</section>
 			</div>
 		</div>
 
@@ -25,15 +125,16 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
+				width: 1200,
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
 			});
 		</script>
 	</body>
